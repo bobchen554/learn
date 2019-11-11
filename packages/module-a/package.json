@@ -1,0 +1,36 @@
+{
+  "name": "module-a",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "cl <chenling@kezaihui.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/module-a.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://r.npm.kezaihui.com/"
+  },
+  "scripts": {
+    "build:dll": "webpack --config ./webpack.dll.config.js --mode production",
+    "build": "webpack --config ./webpack.config.js --mode production",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "antd": "^3.25.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "redux": "^4.0.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
