@@ -1,6 +1,12 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack')
+const {
+    react,
+    common,
+    redux
+  } = require('./config')
 
 module.exports = {
     entry: {
@@ -81,9 +87,12 @@ module.exports = {
         ]
     },
     plugins:[
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template:'public/index.html',
-        })
+        }),
+        new webpack.DllReferencePlugin(common.dll),
+        new webpack.DllReferencePlugin(react.dll),
+        new webpack.DllReferencePlugin(redux.dll),
     ],
 }

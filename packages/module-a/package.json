@@ -17,6 +17,7 @@
     "registry": "http://r.npm.kezaihui.com/"
   },
   "scripts": {
+    "dev": "node index.js",
     "build:dll": "webpack --config ./webpack.dll.config.js --mode production",
     "build": "webpack --config ./webpack.config.js --mode production",
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -25,6 +26,7 @@
     "antd": "^3.25.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-scripts": "2.1.8",
     "redux": "^4.0.4",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"

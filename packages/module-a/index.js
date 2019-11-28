@@ -9,5 +9,4 @@ function moduleA() {
 }
 
 
-module.exports = moduleA;
-
+moduleA()
