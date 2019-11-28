@@ -87,7 +87,9 @@ module.exports = {
         ]
     },
     plugins:[
-        // new CleanWebpackPlugin(),
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: ["index.html", "index*.js", "index*.css"],
+        }),
         new HtmlWebpackPlugin({
             template:'public/index.html',
         }),
