@@ -63,6 +63,10 @@ const redux = {
 function getVendorJsName(path) {
   const reg = /.js$/ig
   return fs.readdirSync(path).filter(item => reg.test(item))
+}
+
+function getVendorScript(path) {
+  getVendorJsName(path)
   .map(item => `<script type="text/javascript" src="./vendor/${item}"></script>`)
   .join('\n')
 }
@@ -74,5 +78,6 @@ module.exports = {
     common,
     react,
     redux,
+    getVendorScript,
     getVendorJsName
 }

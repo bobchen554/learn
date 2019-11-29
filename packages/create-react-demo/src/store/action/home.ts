@@ -1,6 +1,6 @@
 const HOME_ADD_COUNT = 'HOME_ADD_COUNT'
 
-function addCount(data) {
+function addCount(data:any) {
     return {
         type: HOME_ADD_COUNT,
         data,

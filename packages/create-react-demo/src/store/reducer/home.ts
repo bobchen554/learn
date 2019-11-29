@@ -1,10 +1,11 @@
 import { 
   HOME_ADD_COUNT,
 } from '../action/home'
-const initialState = {
-  count: 0
+const initialState:any = {
+  count: 0,
+  home: ''
 };
-const home = (state = initialState, action) => {
+const home = (state = initialState, action : any) => {
     switch (action.type) {
     case HOME_ADD_COUNT:
       return {

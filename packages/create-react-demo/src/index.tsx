@@ -1,10 +1,8 @@
-import React from 'react'
+import * as React from 'react'
 import ReactDOM from "react-dom"
 import Root from "./app"
-
-import 'babel-polyfill'
-
+console.log(ReactDOM)
 ReactDOM.render(
-    <Root author="Shaye"/>,
+    <Root author="bob" />,
     document.getElementById("app")
 );

@@ -1,11 +1,27 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import { connect } from 'react-redux'
 import { addCount } from '@/store/action/home'
+interface Prop {
+  state: any,
+  author: String,
+  addCount: Function,
+  history: any,
+}
+interface State {
+  count: Number,
+  text: String
+}
 
-class Home extends Component {
-  state = {
-    text: "Hello React"
-  };
+
+class Home extends React.Component<Prop, State> {
+  constructor(props: Prop) {
+    super(props);
+    this.state = {
+      text: "Hello React",
+      count: 1,
+    };
+  }
+
 
   /** 组件生命周期钩子函数：在组件挂载完成后立即被调用 */
   componentDidMount() {
@@ -13,7 +29,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.props.state.count)
     return (
     <div>{this.state.text}, I am {this.props.author}! 
     <button onClick={() => this.props.addCount(1)}>add 1</button>
@@ -22,7 +37,7 @@ class Home extends Component {
   }
 }
 
-export default connect(state => ({
+export default connect((state:any) => ({
     state: state.home,
 }), {
     addCount,

@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "@zaihui/tslint-config-react"
+  ],
+  "linterOptions": {
+    "format": "stylish",
+    "exclude": ["**/node_modules/**", "./dist/**", "./build/**"]
+  },
+  "rules": {
+    "trailing-comma": [true, { "esSpecCompliant": true }],
+    "no-boolean-literal-compare": false
+  }
+}

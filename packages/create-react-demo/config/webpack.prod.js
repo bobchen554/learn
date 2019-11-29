@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack')
-const { getVendorJsName } = require('./config')
+const { getVendorScript } = require('./config')
 const InjectScript = require('./injectScript')
 const {
     react,
@@ -12,7 +12,7 @@ const {
 
 module.exports = {
     entry: {
-        index: path.resolve(process.cwd(), './src/index.js')
+        index: path.resolve(process.cwd(), './src/index.tsx')
     },
     output: {
         publicPath: "/",
@@ -22,7 +22,7 @@ module.exports = {
     },
     resolve: {
         // 指定要解析的文件扩展名
-        extensions: [".jsx", ".js", ".json"],
+        extensions: [".jsx", ".js", ".json", '.ts', '.tsx'],
         alias: {
             '@': path.join(__dirname, '..', 'src'),
         }
@@ -77,6 +77,12 @@ module.exports = {
                 use: ["style-loader", "css-loader", "less-loader"]
             },
             {
+                test: /\.tsx?$/,
+                use: {
+                  loader: 'ts-loader'
+                }
+            },
+            {
                 test: /\.scss$/,
                 exclude: /node_modules/,
                 use: [
@@ -97,7 +103,7 @@ module.exports = {
             template:'public/index.html',
         }),
         new InjectScript({
-            content: getVendorJsName(path.join(__dirname, '../dist/vendor')),
+            content: getVendorScript(path.join(__dirname, '../dist/vendor')),
         }),
         new webpack.DllReferencePlugin(common.dll),
         new webpack.DllReferencePlugin(react.dll),

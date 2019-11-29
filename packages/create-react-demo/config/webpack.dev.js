@@ -1,6 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+var AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+const { getVendorJsName } = require('./config')
 const {
     react,
     common,
@@ -9,7 +11,7 @@ const {
 
 module.exports = {
     entry: {
-        index: path.resolve(process.cwd(), './src/index.js')
+        index: path.resolve(process.cwd(), './src/index.tsx')
     },
     output: {
         publicPath: "/",
@@ -19,7 +21,7 @@ module.exports = {
     },
     resolve: {
         // 指定要解析的文件扩展名
-        extensions: [".jsx", ".js", ".json"],
+        extensions: [".jsx", ".js", ".json", '.ts', '.tsx'],
         alias: {
             '@': path.join(__dirname, '..', 'src'),
         }
@@ -72,6 +74,10 @@ module.exports = {
                 use: ["style-loader", "css-loader", "less-loader"]
             },
             {
+                test: /\.(tsx|ts)?$/,
+                use: ['ts-loader']
+            },
+            {
                 test: /\.scss$/,
                 exclude: /node_modules/,
                 use: [
@@ -91,6 +97,16 @@ module.exports = {
         new HtmlWebpackPlugin({
             template:'public/index.html',
         }),
+        // new InjectScript({
+        //     content: getVendorJsName(path.join(__dirname, '../dist/vendor')),
+        // }),
+        new AddAssetHtmlPlugin(getVendorJsName(path.join(__dirname, '../dist/vendor'))
+        .map(name => {
+            return {
+              filepath: require.resolve(path.join(__dirname, `../dist/vendor/${name}`)),
+              includeSourcemap: false
+            }
+          })),
         new webpack.DllReferencePlugin(common.dll),
         new webpack.DllReferencePlugin(react.dll),
         new webpack.DllReferencePlugin(redux.dll),
