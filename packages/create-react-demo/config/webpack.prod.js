@@ -2,6 +2,8 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack')
+const { getVendorJsName } = require('./config')
+const InjectScript = require('./injectScript')
 const {
     react,
     common,
@@ -90,8 +92,12 @@ module.exports = {
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: ["index.html", "index*.js", "index*.css"],
         }),
+       
         new HtmlWebpackPlugin({
             template:'public/index.html',
+        }),
+        new InjectScript({
+            content: getVendorJsName(path.join(__dirname, '../dist/vendor')),
         }),
         new webpack.DllReferencePlugin(common.dll),
         new webpack.DllReferencePlugin(react.dll),

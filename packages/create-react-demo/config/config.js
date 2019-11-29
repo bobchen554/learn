@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs')
 const reactModules = [
     'react',
     'react-dom',
@@ -33,7 +34,10 @@ const common = {
   dll: {
     context: context,
     manifest: path.join(dllRoot, '../dist/vendor', 'common-manifest.json'),
-  }
+  },
+  file: {
+    filepath: path.join(dllRoot, '../dist/vendor', 'redux.*.vendor-dll.js'),
+  },
 }
 
 const react = {
@@ -41,13 +45,26 @@ const react = {
     context: context,
     manifest: path.join(dllRoot, '../dist/vendor', 'react-manifest.json'),
   },
+  file: {
+    filepath: path.join(dllRoot, '../dist/vendor', 'redux.*.vendor-dll.js'),
+  },
 }
 
 const redux = {
   dll: {
     context: context,
     manifest: path.join(dllRoot, '../dist/vendor', 'redux-manifest.json'),
-  }
+  },
+  file: {
+    filepath: path.join(dllRoot, '../dist/vendor', 'redux.*.vendor-dll.js'),
+  },
+}
+
+function getVendorJsName(path) {
+  const reg = /.js$/ig
+  return fs.readdirSync(path).filter(item => reg.test(item))
+  .map(item => `<script type="text/javascript" src="./vendor/${item}"></script>`)
+  .join('\n')
 }
 
 module.exports = {
@@ -56,5 +73,6 @@ module.exports = {
     reduxModules,
     common,
     react,
-    redux
+    redux,
+    getVendorJsName
 }
