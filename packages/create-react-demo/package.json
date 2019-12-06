@@ -20,6 +20,8 @@
     "dev": "webpack-dev-server --config config/webpack.dev.js --open",
     "build": "webpack --config config/webpack.prod.js  --mode production",
     "build:dll": "webpack --config config/webpack.dll.js  --mode production",
+    "lint": "eslint --ext=.js{,x},.ts{,x} src --no-fix",
+    "lint:fix": "eslint --ext=.js{,x},.ts{,x} src --fix",
     "test": "echo \"Error: run tests from root\" && exit 1",
     "tsc": "tsc --init"
   },
