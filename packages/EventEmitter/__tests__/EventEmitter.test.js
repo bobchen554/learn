@@ -1,7 +1,10 @@
 'use strict';
 
-// const eventEmitter = require('..lib');
+// const eventEmitter = require('../lib/EventEmitter');
 
-describe('EventEmitter', () => {
-    it('needs tests');
+// describe('EventEmitter', () => {
+//     expect(new eventEmitter());
+// });
+test('there is no I in team', () => {
+    expect(1 + 2).toBe(2);
 });

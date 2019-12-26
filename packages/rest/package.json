@@ -14,5 +14,8 @@
   "devDependencies": {
     "@types/query-string": "^6.3.0",
     "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "loadsh": "^0.0.4"
   }
 }

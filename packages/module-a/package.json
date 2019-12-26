@@ -24,10 +24,12 @@
   },
   "dependencies": {
     "antd": "^3.25.0",
+    "loadsh": "^0.0.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "2.1.8",
     "redux": "^4.0.4",
+    "@root/rest": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },
