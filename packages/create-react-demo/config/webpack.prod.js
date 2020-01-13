@@ -2,13 +2,14 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack')
-const { getVendorScript } = require('./config')
-const InjectScript = require('./injectScript')
+// const { getVendorScript } = require('./config')
+// const InjectScript = require('./injectScript')
+const finishModules = require('./testHooks/finishModules')
 const {
     react,
     common,
     redux
-  } = require('./config')
+} = require('./config')
 
 module.exports = {
     entry: {
@@ -27,7 +28,7 @@ module.exports = {
             '@': path.join(__dirname, '..', 'src'),
         }
     },
-    mode:'production',
+    mode: 'production',
     module: {
         rules: [
             // 图片文件小于8192byte时，转换为base64字符串
@@ -79,7 +80,7 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 use: {
-                  loader: 'ts-loader'
+                    loader: 'ts-loader'
                 }
             },
             {
@@ -94,19 +95,20 @@ module.exports = {
             }
         ]
     },
-    plugins:[
+    plugins: [
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: ["index.html", "index*.js", "index*.css"],
         }),
-       
+
         new HtmlWebpackPlugin({
-            template:'public/index.html',
+            template: 'public/index.html',
         }),
-        new InjectScript({
-            content: getVendorScript(path.join(__dirname, '../dist/vendor')),
-        }),
-        new webpack.DllReferencePlugin(common.dll),
-        new webpack.DllReferencePlugin(react.dll),
-        new webpack.DllReferencePlugin(redux.dll),
+        new finishModules(),
+        // new InjectScript({
+        //     content: getVendorScript(path.join(__dirname, '../dist/vendor')),
+        // }),
+        // new webpack.DllReferencePlugin(common.dll),
+        // new webpack.DllReferencePlugin(react.dll),
+        // new webpack.DllReferencePlugin(redux.dll),
     ],
 }

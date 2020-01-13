@@ -1,0 +1,30 @@
+{
+  "name": "webpackhooks",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "cl <chenling@kezaihui.com>",
+  "homepage": "https://github.com/bobchen554/template#readme",
+  "license": "ISC",
+  "main": "lib/webpackHooks.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://r.npm.kezaihui.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobchen554/template.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "webpack --config config/webpack.prod.js  --mode production"
+  },
+  "bugs": {
+    "url": "https://github.com/bobchen554/template/issues"
+  }
+}
