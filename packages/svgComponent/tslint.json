@@ -1,0 +1,17 @@
+
+{
+	"defaultSeverity": "error",
+	"extends": [
+    "@zaihui/tslint-config-react"
+  ],
+	"rules": {
+		"no-console": false,
+		"variable-name": false
+  },
+	"rulesDirectory": [],
+	"linterOptions": {
+		"exclude": [
+			"e2e/**/*"
+		]
+	}
+}
