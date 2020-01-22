@@ -26,8 +26,10 @@
     "url": "git+https://github.com/bobchen554/learn.git"
   },
   "scripts": {
+    "build": "npm run build:util && npm run build:svg",
+    "build:svg": "rm -rf ./dist && node index.js",
+    "build:util": "rm -rf ./lib && tsc",
     "ts-node": "rm -rf ./dist && ts-node ./src/core.ts",
-    "build": "rm -rf ./lib && tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
