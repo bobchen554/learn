@@ -5,12 +5,13 @@ import { createBrowserHistory } from 'history'
 import { Provider } from 'react-redux'
 import store from '@/store'
 import Home from '@/pages/Home'
+import DIagrams from '@/pages/DIagrams'
 
 const history = createBrowserHistory()
 
 
 export default function Root(props: any) {
-    return(
+  return(
       <Provider store={store}>
         <Router history={history}>
             <Switch>
@@ -22,8 +23,12 @@ export default function Root(props: any) {
                 path="/home"
                 render={(props:any) => <Home {...props} />}
             />
+            <Route
+                path="/DIagrams"
+                render={(props:any) => <DIagrams {...props} />}
+            />
             </Switch>
         </Router>
         </Provider>
     )
-};
+}
