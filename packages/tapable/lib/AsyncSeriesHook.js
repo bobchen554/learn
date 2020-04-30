@@ -3,16 +3,13 @@ const {
 } = require("tapable")
 
 const AsyncSeriesHook1 = new AsyncSeriesHook(['val1',]); // if not Array ==> []
-const itemArr = []
 AsyncSeriesHook1.tapPromise("test", (item)  =>
-  new Promise((resolve) => setTimeout(() => resolve(item), 2000)).then(item => {
-    itemArr.push(item)
-    console.info(111111)
+  new Promise((resolve) => setTimeout(() => resolve(item), 1000)).then(item => {
+    console.info(item)
   }));
 AsyncSeriesHook1.tapPromise("test", (item)  =>
   new Promise((resolve) => setTimeout(() => resolve(item), 1000)).then(item => {
-    itemArr.push(item)
-    console.info(222222)
+    console.info(item)
   }));
 
 setTimeout(() => {
