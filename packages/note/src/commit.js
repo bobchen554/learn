@@ -17,3 +17,29 @@ if (!commitRE.test(msg)) {
   )
   process.exit(1)
 }
+
+
+
+
+
+
+function GetInstance() {
+  if (GetInstance.instance) return GetInstance.instance
+  const instance = new function Instance() {
+    // todo
+  }
+  GetInstance.instance = instance
+  return instance
+}
+
+function genPrototypeLength(obj) {
+  let _proto = obj.__proto__
+  let length = 0
+  while(_proto) {
+    length ++
+    _proto = _proto.__proto__
+  }
+}
+
+
+
